@@ -47,7 +47,8 @@ function FlashCards() {
   const [indexOpen, setIndexOpen] = useState(-1);
 
   function clickCallback(index) {
-    setIndexOpen(index);
+    if (index === indexOpen) setIndexOpen(-1);
+    else setIndexOpen(index);
   }
 
   return (
@@ -72,7 +73,7 @@ function Card({ question, answer, index, id, callback }) {
       className={`body ${index === id ? "selected" : ""}`}
       onClick={() => callback(id)}
     >
-      <span>{index === id ? answer : question}</span>
+      <p>{index === id ? answer : question}</p>
     </div>
   );
 }
